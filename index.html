@@ -42,7 +42,7 @@
 						}
 					};
 
-					xhttp.open("POST", "https://sendmedicationreminder.herokuapp.com//sendmessage", true);
+					xhttp.open("POST", "https://sendmedicationreminder.herokuapp.com/sendmessage", true);
 					xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 					xhttp.send("name="+document.getElementById('name').value+"&quantity="+document.getElementById('quantity').value+"&brand="+document.getElementById('brand').value+"&cellNum="+document.getElementById('cellNum').value)
 				}
