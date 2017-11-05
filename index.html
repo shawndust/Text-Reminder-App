@@ -3,8 +3,8 @@
 <html>
 <head>
 	<title>Reusable Form Demo</title>
-	<link rel="stylesheet" media="screen" href="static/bootstrap.min.css">
-	<link rel="stylesheet" href="static/bootstrap-theme.min.css">
+<!--	<link rel="stylesheet" media="screen" href="static/bootstrap.min.css">
+	<link rel="stylesheet" href="static/bootstrap-theme.min.css"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -19,7 +19,7 @@
 				<input type="text" class="form-control" id="name" name="name" placeholder="What's your name?">
 				<br>
 				<label for="cellNum">Cell Number:</label>
-				<input type="text" class="form-control" id="cellNum" name="cellNum" placeholder="ex. +18008471234">
+				<input type="text" class="form-control" id="cellNum" name="cellNum" placeholder="ex. 8008471234">
 				<br>
 				<label for="quantity">Quantity of Pills:</label>
 				<input type="text" class="form-control" id="quantity" name="quantity" placeholder="Quantity of pills">
@@ -28,7 +28,25 @@
 				<input type="text" class="form-control" id="brand" name="brand" placeholder="Tylenol, Ambien, etc.">
 
 			</div>
-			<button type="submit" class="btn btn-success">Send Message</button>
+	<!--		<button type="submit" class="btn btn-success">Send Message</button> -->
+			<button type="button" onclick="loadDoc()">Send Message</button>
+
+			<p id="demo"></p>
+
+			<script>
+				function loadDoc() {
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							document.getElementById("demo").innerHTML = this.responseText;
+						}
+					};
+
+					xhttp.open("POST", "https://sendmedicationreminder.herokuapp.com//sendmessage", true);
+					xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					xhttp.send("name="+document.getElementById('name').value+"&quantity="+document.getElementById('quantity').value+"&brand="+document.getElementById('brand').value+"&cellNum="+document.getElementById('cellNum').value)
+				}
+			</script>
 		</form>
 		<!--
 		  <br>
