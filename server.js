@@ -24,7 +24,7 @@ app.post('/sendmessage', function(req, res)
 	    client.messages.create({
             body: 'Dear ' + req.body.name + ' please take ' + req.body.quantity + ' '+ req.body.brand + ' pills now.',
 		    to: '+1'+ req.body.cellNum,  // Text this number
-	        from: '+13128184945' // From a valid Twilio number
+	        from: '+1234' // From a valid Twilio number
 	})
 	
 
